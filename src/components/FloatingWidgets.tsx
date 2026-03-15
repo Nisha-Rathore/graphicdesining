@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, X, Send, Bot, User } from "lucide-react";
+import { X, Send, Bot, User, Sparkles, Phone } from "lucide-react";
 
 interface Message {
   id: string;
@@ -84,6 +84,15 @@ const FloatingWidgets = () => {
 
   return (
     <>
+      {/* Call widget */}
+      <a
+        href="tel:+1234567890"
+        className="fixed bottom-40 right-6 z-40 w-14 h-14 rounded-full bg-secondary flex items-center justify-center shadow-[0_4px_20px_hsl(var(--secondary)/0.4)] hover:scale-110 transition-transform duration-300"
+        aria-label="Call us"
+      >
+        <Phone className="w-6 h-6 text-secondary-foreground" />
+      </a>
+
       {/* WhatsApp floating button */}
       <a
         href="https://wa.me/1234567890"
@@ -104,7 +113,7 @@ const FloatingWidgets = () => {
         whileTap={{ scale: 0.95 }}
         aria-label="Open AI Chat"
       >
-        {chatOpen ? <X className="w-6 h-6 text-primary-foreground" /> : <MessageSquare className="w-6 h-6 text-primary-foreground" />}
+        {chatOpen ? <X className="w-6 h-6 text-primary-foreground" /> : <Sparkles className="w-6 h-6 text-primary-foreground" />}
       </motion.button>
 
       {/* Chat panel */}
