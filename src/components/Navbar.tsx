@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Home, Phone, MessageCircle } from "lucide-react";
+import { Menu, X, Home, Phone } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "#", icon: Home },
