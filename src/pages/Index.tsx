@@ -6,6 +6,7 @@ import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import FloatingWidgets from "@/components/FloatingWidgets";
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <TestimonialsSection />
       <ContactSection />
       <Footer />
+      <FloatingWidgets />
     </div>
   );
 };

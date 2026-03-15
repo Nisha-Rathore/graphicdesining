@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Home, Phone, MessageCircle } from "lucide-react";
 
 const navItems = [
+  { label: "Home", href: "#", icon: Home },
   { label: "Services", href: "#services" },
   { label: "Portfolio", href: "#portfolio" },
   { label: "Why Us", href: "#why-us" },
   { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "#contact", icon: Phone },
 ];
 
 const Navbar = () => {
@@ -45,6 +46,16 @@ const Navbar = () => {
               {item.label}
             </a>
           ))}
+          {/* WhatsApp */}
+          <a
+            href="https://wa.me/1234567890"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors duration-300 flex items-center gap-1.5"
+          >
+            <MessageCircle className="w-4 h-4" />
+            WhatsApp
+          </a>
           <a
             href="#contact"
             className="glass glow-border rounded-xl px-5 py-2.5 text-sm font-display font-semibold text-foreground hover:bg-white/10 transition-all duration-300"
@@ -82,6 +93,16 @@ const Navbar = () => {
                   {item.label}
                 </a>
               ))}
+              <a
+                href="https://wa.me/1234567890"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5"
+              >
+                <MessageCircle className="w-4 h-4" />
+                WhatsApp
+              </a>
               <a
                 href="#contact"
                 onClick={() => setMobileOpen(false)}
