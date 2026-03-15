@@ -93,16 +93,7 @@ const Navbar = () => {
                   {item.label}
                 </a>
               ))}
-              <a
-                href="https://wa.me/1234567890"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileOpen(false)}
-                className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5"
-              >
-                <MessageCircle className="w-4 h-4" />
-                WhatsApp
-              </a>
+              <
               <a
                 href="#contact"
                 onClick={() => setMobileOpen(false)}
