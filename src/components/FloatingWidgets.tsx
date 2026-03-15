@@ -113,7 +113,7 @@ const FloatingWidgets = () => {
         whileTap={{ scale: 0.95 }}
         aria-label="Open AI Chat"
       >
-        {chatOpen ? <X className="w-6 h-6 text-primary-foreground" /> : <BotMessageSquare className="w-6 h-6 text-primary-foreground" />}
+        {chatOpen ? <X className="w-6 h-6 text-primary-foreground" /> : <Sparkles className="w-6 h-6 text-primary-foreground" />}
       </motion.button>
 
       {/* Chat panel */}
