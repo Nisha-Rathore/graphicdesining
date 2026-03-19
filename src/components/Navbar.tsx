@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Shield } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import logoDark from "@/assets/logo-dark.png";
 
 const navItems = [
   { label: "Home", href: "#" },
@@ -32,8 +33,8 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
-        <a href="#" className="font-display text-xl font-black tracking-tighter text-foreground">
-          Innovate<span className="text-gradient-accent">Grow</span>
+        <a href="#" className="shrink-0">
+          <img src={logoDark} alt="InnovateGrow Agency" className="h-8" />
         </a>
 
         {/* Desktop */}

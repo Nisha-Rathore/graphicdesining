@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Instagram, Facebook, Twitter, Linkedin, ArrowUpRight } from "lucide-react";
+import logoDark from "@/assets/logo-dark.png";
 
 const navLinks = [
   { label: "Home", href: "#" },
@@ -23,8 +24,8 @@ const Footer = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-4">
-            <a href="#" className="font-display text-2xl font-black tracking-tighter text-foreground">
-              Innovate<span className="text-gradient-accent">Grow</span>
+            <a href="#" className="inline-block">
+              <img src={logoDark} alt="InnovateGrow Agency" className="h-8" />
             </a>
             <p className="font-body text-sm text-muted-foreground leading-relaxed">
               Crafting bold digital experiences that elevate brands and drive real results.
