@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Shield } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import logoDark from "@/assets/logo-dark.png";
 
 const navItems = [
   { label: "Home", href: "#" },

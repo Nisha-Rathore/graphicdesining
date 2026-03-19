@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Instagram, Facebook, Twitter, Linkedin, ArrowUpRight } from "lucide-react";
+import logoDark from "@/assets/logo-dark.png";
 
 const navLinks = [
   { label: "Home", href: "#" },
