@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Shield } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import logoDark from "@/assets/logo-dark.png";
 
 const navItems = [
@@ -43,16 +42,17 @@ const Navbar = () => {
             <a
               key={item.label}
               href={item.href}
-              className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors duration-300"
+              className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors duration-300 relative group"
             >
               {item.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
             </a>
           ))}
           <a
             href="#contact"
             className="glass glow-border rounded-xl px-5 py-2.5 text-sm font-display font-semibold text-foreground hover:bg-white/10 transition-all duration-300"
           >
-            Start Your Project
+            Get a Quote
           </a>
           <a
             href="/admin"
@@ -97,7 +97,7 @@ const Navbar = () => {
                 onClick={() => setMobileOpen(false)}
                 className="glass glow-border rounded-xl px-5 py-2.5 text-sm font-display font-semibold text-foreground text-center"
               >
-                Start Your Project
+                Get a Quote
               </a>
               <a
                 href="/admin"
