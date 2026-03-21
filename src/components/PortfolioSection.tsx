@@ -27,30 +27,22 @@ const PortfolioSection = () => {
   const categories = ["All", ...Array.from(new Set(projects.map((p) => p.category)))];
   const filtered = active === "All" ? projects : projects.filter((p) => p.category === active);
 
-  const gradients = [
-    "from-primary/30 to-secondary/30",
-    "from-secondary/30 to-glow-blue/20",
-    "from-gold/20 to-primary/20",
-    "from-glow-purple/20 to-secondary/20",
-    "from-secondary/20 to-gold/20",
-    "from-primary/20 to-glow-blue/20",
-  ];
-
   return (
     <section id="portfolio" className="relative py-32 overflow-hidden">
-      <div className="absolute top-1/2 right-0 w-[500px] h-[500px] rounded-full bg-secondary/5 blur-[150px]" />
+      <div className="absolute top-1/2 right-0 w-[500px] h-[500px] rounded-full bg-[hsl(var(--neon-pink)/0.05)] blur-[180px]" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[hsl(var(--neon-cyan)/0.04)] blur-[150px]" />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
           className="text-center mb-16"
         >
-          <p className="font-body text-sm uppercase tracking-[0.3em] text-primary mb-4">Selected Work</p>
+          <p className="font-body text-sm uppercase tracking-[0.3em] text-neon-pink mb-4">Selected Work</p>
           <h2 className="font-display text-4xl md:text-6xl font-black tracking-tighter text-foreground mb-6">
-            Our Portfolio
+            Our <span className="text-gradient-accent">Portfolio</span>
           </h2>
           <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
             Browse our latest projects — logos, branding, social media, packaging, and more.
@@ -70,8 +62,8 @@ const PortfolioSection = () => {
               onClick={() => setActive(cat)}
               className={`rounded-full px-6 py-2.5 text-sm font-body transition-all duration-300 ${
                 active === cat
-                  ? "bg-primary text-primary-foreground shadow-[0_0_20px_hsl(var(--primary)/0.3)]"
-                  : "glass text-muted-foreground hover:text-foreground hover:bg-white/10"
+                  ? "bg-gradient-to-r from-neon-purple to-neon-cyan text-primary-foreground neon-glow-purple"
+                  : "glass text-muted-foreground hover:text-foreground hover:border-neon-purple/20"
               }`}
             >
               {cat}
@@ -79,7 +71,6 @@ const PortfolioSection = () => {
           ))}
         </motion.div>
 
-        {/* Loading */}
         {loading && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map((i) => (
@@ -88,7 +79,6 @@ const PortfolioSection = () => {
           </div>
         )}
 
-        {/* Empty state */}
         {!loading && projects.length === 0 && (
           <div className="text-center py-20">
             <div className="w-20 h-20 rounded-full glass mx-auto flex items-center justify-center mb-6">
@@ -98,7 +88,6 @@ const PortfolioSection = () => {
           </div>
         )}
 
-        {/* Masonry Grid */}
         {!loading && filtered.length > 0 && (
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
             <AnimatePresence mode="popLayout">
@@ -106,16 +95,15 @@ const PortfolioSection = () => {
                 <motion.div
                   key={project.id}
                   layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                  transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.23, 1, 0.32, 1] }}
                   className="group relative break-inside-avoid"
                 >
                   <div
-                    className={`${idx % 3 === 0 ? "aspect-square" : idx % 3 === 1 ? "aspect-[4/5]" : "aspect-[3/4]"} rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br ${gradients[idx % gradients.length]} relative cursor-pointer group-hover:border-primary/20 transition-all duration-500`}
+                    className={`${idx % 3 === 0 ? "aspect-square" : idx % 3 === 1 ? "aspect-[4/5]" : "aspect-[3/4]"} rounded-2xl overflow-hidden card-gradient-border relative cursor-pointer transition-all duration-500 group-hover:shadow-[0_0_40px_hsl(var(--neon-purple)/0.15)]`}
                   >
-                    {/* Project image */}
                     {project.image_url && (
                       <img
                         src={project.image_url}
@@ -125,31 +113,26 @@ const PortfolioSection = () => {
                       />
                     )}
 
-                    {/* Hover overlay with glass effect */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-6">
+                    {/* Gradient placeholder when no image */}
+                    {!project.image_url && (
+                      <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/10 via-background to-neon-cyan/10 flex items-center justify-center">
+                        <div className="w-24 h-24 rounded-full border border-foreground/5 group-hover:scale-150 group-hover:border-neon-purple/20 transition-all duration-700" />
+                      </div>
+                    )}
+
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-6">
                       <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                        <span className="inline-block glass rounded-full px-3 py-1 font-body text-[10px] uppercase tracking-wider text-primary mb-3">{project.category}</span>
+                        <span className="inline-block glass rounded-full px-3 py-1 font-body text-[10px] uppercase tracking-wider text-neon-cyan mb-3">{project.category}</span>
                         <h3 className="font-display text-xl font-bold text-foreground">{project.title}</h3>
                         {project.description && (
                           <p className="font-body text-sm text-muted-foreground mt-2 line-clamp-2">{project.description}</p>
                         )}
-                        {project.client_name && (
-                          <p className="font-body text-xs text-primary/80 mt-2">Client: {project.client_name}</p>
-                        )}
                       </div>
                     </div>
 
-                    {/* Decorative elements (shown when no image) */}
-                    {!project.image_url && (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-24 h-24 rounded-full border border-white/10 group-hover:scale-150 group-hover:border-primary/20 transition-all duration-700" />
-                        <div className="absolute w-12 h-12 rounded-full border border-white/5 group-hover:scale-[3] transition-all duration-1000" />
-                      </div>
-                    )}
-
-                    {/* Featured badge */}
                     {project.is_featured && (
-                      <div className="absolute top-4 right-4 glass rounded-full px-3 py-1 font-body text-[10px] uppercase tracking-wider text-gold">
+                      <div className="absolute top-4 right-4 glass rounded-full px-3 py-1 font-body text-[10px] uppercase tracking-wider text-neon-pink">
                         Featured
                       </div>
                     )}
@@ -160,7 +143,6 @@ const PortfolioSection = () => {
           </div>
         )}
 
-        {/* View all button */}
         {!loading && filtered.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}

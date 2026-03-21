@@ -4,15 +4,17 @@ import { ArrowRight, Sparkles } from "lucide-react";
 const CTASection = () => {
   return (
     <section className="relative py-32 overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/10 blur-[200px]" />
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-secondary/10 blur-[150px]" />
+      {/* Animated background blobs */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[hsl(var(--neon-purple)/0.1)] blur-[200px] animate-blob" />
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-[hsl(var(--neon-cyan)/0.06)] blur-[180px] animate-blob" style={{ animationDelay: "2s" }} />
+        <div className="absolute bottom-1/4 left-1/3 w-[400px] h-[400px] rounded-full bg-[hsl(var(--neon-pink)/0.05)] blur-[150px] animate-blob" style={{ animationDelay: "4s" }} />
+      </div>
 
       {/* Grid pattern */}
       <div className="absolute inset-0 opacity-[0.02]" style={{
         backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-        backgroundSize: '40px 40px'
+        backgroundSize: '50px 50px'
       }} />
 
       <div className="container mx-auto px-6 relative z-10">
@@ -28,9 +30,9 @@ const CTASection = () => {
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-8"
+            className="w-16 h-16 rounded-2xl bg-gradient-to-br from-neon-purple/20 to-neon-cyan/20 flex items-center justify-center mx-auto mb-8"
           >
-            <Sparkles className="w-8 h-8 text-primary" />
+            <Sparkles className="w-8 h-8 text-neon-purple" />
           </motion.div>
 
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-foreground mb-6">
@@ -46,11 +48,11 @@ const CTASection = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#contact"
-              className="group relative overflow-hidden rounded-2xl bg-primary px-10 py-4 font-display font-bold text-primary-foreground transition-all duration-400 hover:shadow-[0_0_40px_hsl(var(--primary)/0.5)] hover:scale-105 flex items-center gap-3"
+              className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-neon-purple via-primary to-neon-cyan px-10 py-4 font-display font-bold text-primary-foreground transition-all duration-400 hover:scale-105 neon-glow-purple flex items-center gap-3"
             >
               <span className="relative z-10">Start Your Project</span>
               <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
-              <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] opacity-0 group-hover:opacity-100 transition-opacity duration-400 animate-gradient-rotate" />
+              <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan via-neon-pink to-neon-purple bg-[length:200%_100%] opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-gradient-rotate" />
             </a>
             <a
               href="#portfolio"
@@ -63,8 +65,8 @@ const CTASection = () => {
           {/* Trust badges */}
           <div className="mt-12 flex items-center justify-center gap-6 flex-wrap">
             {["500+ Projects", "98% Satisfaction", "24/7 Support"].map((badge) => (
-              <span key={badge} className="font-body text-xs text-muted-foreground/60 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary/40" />
+              <span key={badge} className="font-body text-xs text-muted-foreground/50 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-neon-cyan/60" />
                 {badge}
               </span>
             ))}

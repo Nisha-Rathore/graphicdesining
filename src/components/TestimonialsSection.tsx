@@ -29,7 +29,6 @@ const testimonials = [
 const TestimonialsSection = () => {
   const [current, setCurrent] = useState(0);
 
-  // Auto-play
   useEffect(() => {
     const timer = setInterval(() => setCurrent((p) => (p + 1) % testimonials.length), 6000);
     return () => clearInterval(timer);
@@ -40,51 +39,56 @@ const TestimonialsSection = () => {
 
   return (
     <section id="testimonials" className="relative py-32 overflow-hidden">
-      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[150px]" />
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] rounded-full bg-[hsl(var(--neon-pink)/0.05)] blur-[180px] animate-blob" />
+      <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] rounded-full bg-[hsl(var(--neon-purple)/0.04)] blur-[120px] animate-blob" style={{ animationDelay: "3s" }} />
 
       <div className="container mx-auto px-6 max-w-4xl relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
           className="text-center mb-16"
         >
-          <p className="font-body text-sm uppercase tracking-[0.3em] text-primary mb-4">Testimonials</p>
+          <p className="font-body text-sm uppercase tracking-[0.3em] text-neon-cyan mb-4">Testimonials</p>
           <h2 className="font-display text-4xl md:text-6xl font-black tracking-tighter text-foreground mb-6">
-            Client Voices
+            Client <span className="text-gradient-accent">Voices</span>
           </h2>
           <p className="font-body text-lg text-muted-foreground max-w-xl mx-auto">
             Don't just take our word for it — hear what our clients have to say.
           </p>
         </motion.div>
 
-        <div className="relative glass rounded-3xl rim-light p-10 md:p-16 glow-accent">
-          {/* Quote icon */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative glass rounded-3xl rim-light p-10 md:p-16 glow-accent"
+        >
+          {/* Quote icon with glow */}
           <div className="absolute top-6 left-8 md:top-8 md:left-12">
-            <Quote className="w-10 h-10 text-primary/20" />
+            <Quote className="w-10 h-10 text-neon-purple/20" />
           </div>
 
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -40 }}
+              initial={{ opacity: 0, x: 60, scale: 0.95 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: -60, scale: 0.95 }}
               transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
               className="text-center"
             >
-              <div className="flex justify-center gap-1 mb-8">
+              <div className="flex justify-center gap-1.5 mb-8">
                 {Array.from({ length: testimonials[current].rating }).map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-gold text-gold" />
+                  <Star key={i} className="w-5 h-5 fill-neon-cyan text-neon-cyan" />
                 ))}
               </div>
               <blockquote className="font-display text-xl md:text-2xl font-semibold text-foreground leading-relaxed mb-10">
                 "{testimonials[current].quote}"
               </blockquote>
               <div className="flex flex-col items-center gap-3">
-                {/* Avatar */}
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-neon-purple to-neon-cyan flex items-center justify-center neon-glow-purple">
                   <span className="font-display text-sm font-bold text-primary-foreground">
                     {testimonials[current].avatar}
                   </span>
@@ -99,8 +103,8 @@ const TestimonialsSection = () => {
 
           {/* Navigation */}
           <div className="flex justify-center items-center gap-4 mt-12">
-            <button onClick={prev} className="glass rounded-full p-3 hover:bg-white/10 transition-colors group">
-              <ChevronLeft className="w-5 h-5 text-foreground group-hover:text-primary transition-colors" />
+            <button onClick={prev} className="glass rounded-full p-3 hover:border-neon-purple/30 hover:shadow-[0_0_15px_hsl(var(--neon-purple)/0.2)] transition-all duration-300 group">
+              <ChevronLeft className="w-5 h-5 text-foreground group-hover:text-neon-purple transition-colors" />
             </button>
             <div className="flex items-center gap-2">
               {testimonials.map((_, i) => (
@@ -108,16 +112,16 @@ const TestimonialsSection = () => {
                   key={i}
                   onClick={() => setCurrent(i)}
                   className={`h-2 rounded-full transition-all duration-500 ${
-                    i === current ? "bg-primary w-8" : "bg-white/20 w-2 hover:bg-white/40"
+                    i === current ? "bg-gradient-to-r from-neon-purple to-neon-cyan w-8 shadow-[0_0_10px_hsl(var(--neon-purple)/0.4)]" : "bg-foreground/10 w-2 hover:bg-foreground/20"
                   }`}
                 />
               ))}
             </div>
-            <button onClick={next} className="glass rounded-full p-3 hover:bg-white/10 transition-colors group">
-              <ChevronRight className="w-5 h-5 text-foreground group-hover:text-primary transition-colors" />
+            <button onClick={next} className="glass rounded-full p-3 hover:border-neon-purple/30 hover:shadow-[0_0_15px_hsl(var(--neon-purple)/0.2)] transition-all duration-300 group">
+              <ChevronRight className="w-5 h-5 text-foreground group-hover:text-neon-purple transition-colors" />
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Instagram, Facebook, Twitter, Linkedin, ArrowUpRight } from "lucide-react";
 import logoDark from "@/assets/logo-dark.png";
 
@@ -19,8 +20,12 @@ const socials = [
 
 const Footer = () => {
   return (
-    <footer className="border-t border-white/5 bg-card/50">
-      <div className="container mx-auto px-6 py-16">
+    <footer className="relative border-t border-foreground/5 bg-[hsl(var(--surface-glass)/0.3)]">
+      {/* Floating shapes */}
+      <div className="absolute top-0 left-1/4 w-[200px] h-[200px] rounded-full bg-[hsl(var(--neon-purple)/0.03)] blur-[100px]" />
+      <div className="absolute bottom-0 right-1/4 w-[150px] h-[150px] rounded-full bg-[hsl(var(--neon-cyan)/0.03)] blur-[80px]" />
+
+      <div className="container mx-auto px-6 py-16 relative z-10">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-4">
@@ -36,7 +41,7 @@ const Footer = () => {
                   key={s.label}
                   href={s.href}
                   aria-label={s.label}
-                  className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-white/10 transition-all duration-300"
+                  className="w-9 h-9 rounded-xl bg-foreground/5 border border-foreground/8 flex items-center justify-center text-muted-foreground hover:text-neon-purple hover:border-neon-purple/30 hover:shadow-[0_0_15px_hsl(var(--neon-purple)/0.2)] transition-all duration-300"
                 >
                   <s.icon className="w-4 h-4" />
                 </a>
@@ -52,7 +57,7 @@ const Footer = () => {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="group inline-flex items-center gap-1.5 font-body text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
+                    className="group inline-flex items-center gap-1.5 font-body text-sm text-muted-foreground hover:text-neon-cyan transition-colors duration-300"
                   >
                     {link.label}
                     <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-0.5 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300" />
@@ -70,7 +75,7 @@ const Footer = () => {
                 <li key={s}>
                   <a
                     href="#services"
-                    className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
+                    className="font-body text-sm text-muted-foreground hover:text-neon-cyan transition-colors duration-300"
                   >
                     {s}
                   </a>
@@ -84,15 +89,15 @@ const Footer = () => {
             <h4 className="font-display text-sm font-bold uppercase tracking-wider text-foreground mb-5">Contact</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Mail className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                <Mail className="w-4 h-4 text-neon-purple mt-0.5 shrink-0" />
                 <span className="font-body text-sm text-muted-foreground">hello@innovategrow.com</span>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                <Phone className="w-4 h-4 text-neon-cyan mt-0.5 shrink-0" />
                 <span className="font-body text-sm text-muted-foreground">+1 (234) 567-890</span>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                <MapPin className="w-4 h-4 text-neon-pink mt-0.5 shrink-0" />
                 <span className="font-body text-sm text-muted-foreground">Remote — Worldwide</span>
               </li>
             </ul>
@@ -101,14 +106,14 @@ const Footer = () => {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/5">
+      <div className="border-t border-foreground/5">
         <div className="container mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="font-body text-xs text-muted-foreground">
             © 2026 Innovate Grow Designs. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
-            <a href="#" className="font-body text-xs text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</a>
-            <a href="#" className="font-body text-xs text-muted-foreground hover:text-foreground transition-colors">Terms of Service</a>
+            <a href="#" className="font-body text-xs text-muted-foreground hover:text-neon-purple transition-colors">Privacy Policy</a>
+            <a href="#" className="font-body text-xs text-muted-foreground hover:text-neon-purple transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>
