@@ -79,7 +79,7 @@ const ServicesSection = () => {
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5, delay: i * 0.1, ease: [0.23, 1, 0.32, 1] }}
                     whileHover={{ y: -8, transition: { duration: 0.3, type: "spring", stiffness: 300 } }}
-                    className={`group relative overflow-hidden rounded-2xl card-gradient-border backdrop-blur-xl cursor-pointer ${colorSet.border} ${colorSet.glow} transition-all duration-500`}
+                    className={`group tilt-hover relative overflow-hidden rounded-2xl card-gradient-border backdrop-blur-xl cursor-pointer ${colorSet.border} ${colorSet.glow} transition-all duration-500`}
                   >
                     {/* Inner glow on hover */}
                     <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-neon-purple/20 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-60" />

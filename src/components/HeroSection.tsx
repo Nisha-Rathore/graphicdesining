@@ -139,7 +139,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0, rotateX: 0 }}
             transition={{ duration: 0.7, delay: 0.56, ease: [0.23, 1, 0.32, 1] }}
           >
-            <span className="text-gradient-accent font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9]">
+            <span className="text-shimmer font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9]">
               That Stand Out
             </span>
           </motion.div>
@@ -163,7 +163,7 @@ const HeroSection = () => {
         >
           <a
             href="#contact"
-            className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-neon-purple via-primary to-neon-cyan px-10 py-4 font-display font-bold text-primary-foreground transition-all duration-400 hover:scale-105 neon-glow-purple flex items-center gap-3"
+            className="conic-glow group relative overflow-hidden rounded-2xl bg-gradient-to-r from-neon-purple via-primary to-neon-cyan px-10 py-4 font-display font-bold text-primary-foreground transition-all duration-400 hover:scale-105 neon-glow-purple flex items-center gap-3"
           >
             <span className="relative z-10">Get a Free Quote</span>
             <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan via-neon-pink to-neon-purple bg-[length:200%_100%] opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-gradient-rotate" />
