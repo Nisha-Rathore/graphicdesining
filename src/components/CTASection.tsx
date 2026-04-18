@@ -48,7 +48,7 @@ const CTASection = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#contact"
-              className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-neon-purple via-primary to-neon-cyan px-10 py-4 font-display font-bold text-primary-foreground transition-all duration-400 hover:scale-105 neon-glow-purple flex items-center gap-3"
+              className="conic-glow group relative overflow-hidden rounded-2xl bg-gradient-to-r from-neon-purple via-primary to-neon-cyan px-10 py-4 font-display font-bold text-primary-foreground transition-all duration-400 hover:scale-105 neon-glow-purple flex items-center gap-3"
             >
               <span className="relative z-10">Start Your Project</span>
               <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
