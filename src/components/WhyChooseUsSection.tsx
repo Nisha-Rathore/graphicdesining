@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { Sparkles, Zap, DollarSign, RefreshCw, Headphones, Award } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
+import workspace from "@/assets/studio-workspace.jpg";
 
 const reasons = [
   { icon: Sparkles, title: "Unique & Custom Designs", desc: "Every project is a one-of-a-kind creation tailored to your brand's DNA.", neon: "neon-purple" },
@@ -127,6 +128,36 @@ const WhyChooseUsSection = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Studio image strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+          className="mt-20 max-w-6xl mx-auto"
+        >
+          <div className="relative rounded-3xl overflow-hidden card-gradient-border group">
+            <img
+              src={workspace}
+              alt="Our creative studio workspace"
+              loading="lazy"
+              className="w-full h-[280px] md:h-[420px] object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+            <div className="absolute inset-0 flex items-center">
+              <div className="px-8 md:px-16 max-w-xl">
+                <p className="font-body text-xs uppercase tracking-[0.3em] text-neon-cyan mb-3">Inside the Studio</p>
+                <h3 className="font-display text-3xl md:text-5xl font-black tracking-tighter text-foreground mb-4">
+                  Where <span className="text-gradient-accent">ideas</span> come to life
+                </h3>
+                <p className="font-body text-sm md:text-base text-muted-foreground">
+                  Our team blends strategy, craft, and technology to deliver work that moves brands forward.
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
